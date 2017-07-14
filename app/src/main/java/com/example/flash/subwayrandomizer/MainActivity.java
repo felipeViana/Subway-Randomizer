@@ -53,13 +53,47 @@ public class MainActivity extends AppCompatActivity {
                 "Queijo:\n"+
                 queijos.get(rand.nextInt(queijos.size()))+"\n\n"+
 
-                "Vegetais:\n"+
-                vegetais.get(rand.nextInt(vegetais.size()))+"\n\n"+
-
-                "Molhos:\n"+
-                molhos.get(rand.nextInt(molhos.size()))+"\n\n"+
-
                 "");
+
+        int n_chosen_vegetais = rand.nextInt(vegetais.size())+1;
+        textView1.append(n_chosen_vegetais + " vegetais:\n");
+
+        boolean[] already_chosen_vegetais = new boolean[vegetais.size()];
+        Arrays.fill(already_chosen_vegetais, false);
+
+        for(int i=0; i<n_chosen_vegetais; i++){
+            if(i>0)
+                textView1.append(", ");
+
+            int chosen_vegetal;
+            do{
+                chosen_vegetal = rand.nextInt(vegetais.size());
+            }while(already_chosen_vegetais[chosen_vegetal]==true);
+            already_chosen_vegetais[chosen_vegetal]=true;
+
+            textView1.append(vegetais.get(chosen_vegetal));
+        }
+        textView1.append("\n\n");
+
+        int n_chosen_molhos = rand.nextInt(molhos.size())+1;
+        textView1.append(n_chosen_molhos + " molhos:\n");
+
+        boolean[] already_chosen_molhos = new boolean[molhos.size()];
+        Arrays.fill(already_chosen_molhos, false);
+
+        for(int i=0; i<n_chosen_molhos; i++){
+            if(i>0)
+                textView1.append(", ");
+
+            int chosen_molho;
+            do{
+                chosen_molho = rand.nextInt(molhos.size());
+            }while(already_chosen_molhos[chosen_molho]==true);
+            already_chosen_molhos[chosen_molho]=true;
+
+            textView1.append(molhos.get(chosen_molho));
+        }
+        textView1.append("\n\n");
     }
 
     @Override
